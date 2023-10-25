@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .icon-4 {
+    @apply w-4 h-4;
+  }
+  .icon-4 > svg {
+    width: 100%;
+    height: 100%;
+  }
+}
