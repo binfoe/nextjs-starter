@@ -1,5 +1,5 @@
 {
-  "typescript.tsdk": "./node_modules/typescript/lib",
+  // "typescript.tsdk": "./node_modules/typescript/lib",
   // "prettier.configPath": "./.prettierrc.js",
   // "prettier.prettierPath": "./node_modules/prettier/index.cjs",
   // "editor.formatOnSave": true,

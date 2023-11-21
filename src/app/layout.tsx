@@ -2,7 +2,6 @@ import '@client/styles/tailwind.css';
 
 import type { Metadata } from 'next';
 import { ToastContainerWrapper } from './toast';
-import { TrpcProvider } from '@client/trpc-provider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ToastContainerWrapper />
-        <TrpcProvider>{children}</TrpcProvider>
+        {children}
       </body>
     </html>
   );

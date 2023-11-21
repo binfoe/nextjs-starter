@@ -1,13 +1,15 @@
 'use client';
 
 import { Post } from '@prisma/client';
-import { FC, useMemo, useRef, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Table, TableColumn } from 'preline-react/lib/table';
-import { api } from '@client/trpc';
+import { useNonFirstEffect } from 'preline-react/lib/util';
+import { Toast } from 'preline-react/lib/toast';
+import { listProject } from '@server/actions/post';
 
 export const PostList: FC<{
-  initdata: {
+  ssrData: {
     total: number;
     list: Post[];
   };
@@ -18,18 +20,21 @@ export const PostList: FC<{
     size: 1,
   });
 
-  const isFirst = useRef(true);
-  const { isLoading, data } = api.post.list.useQuery(pagiInfo, {
-    refetchOnWindowFocus: false,
-    initialData: () => {
-      if (isFirst.current) {
-        isFirst.current = false;
-        return props.initdata;
-      } else {
-        return undefined;
-      }
-    },
-  });
+  const [data, setData] = useState(props.ssrData);
+  const [loading, setLoading] = useState(false);
+  const load = async () => {
+    setLoading(true);
+    const [err, data] = await listProject(pagiInfo);
+    setLoading(false);
+    if (err) {
+      Toast.error(`${err.message}`);
+    } else {
+      setData(data);
+    }
+  };
+  useNonFirstEffect(() => {
+    load();
+  }, [pagiInfo]);
 
   const columns = useMemo(() => {
     return [
@@ -58,7 +63,7 @@ export const PostList: FC<{
       </div> */}
       <Table
         data={data?.list}
-        loading={isLoading}
+        loading={loading}
         columns={columns}
         pagination={{
           total: data?.total,
