@@ -63,9 +63,11 @@ export const PostList: FC<{
       </div> */}
       <Table
         data={data?.list}
+        bordered
         loading={loading}
         columns={columns}
         pagination={{
+          className: 'm-2',
           total: data?.total,
           pageNumber: pagiInfo.page,
           pageSize: pagiInfo.size,

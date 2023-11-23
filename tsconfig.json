@@ -17,12 +17,6 @@
     "plugins": [
       {
         "name": "next"
-      },
-      {
-        "name": "typescript-plugin-css-modules",
-        "options": {
-          "classnameTransform": "asIt"
-        }
       }
     ],
     "paths": {
