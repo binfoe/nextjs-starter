@@ -10,7 +10,7 @@ import { BsAirplaneFill, BsBookmarkFill, BsPersonFill } from 'react-icons/bs';
 
 const MenuItems: MenuItemProps[] = [
   {
-    name: <Link href='/posts'>SSR & CSR Table</Link>,
+    name: <Link href='/post'>SSR & CSR Table</Link>,
     icon: <BsBookmarkFill />,
     key: '/post',
   },

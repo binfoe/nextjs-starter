@@ -4,7 +4,7 @@ import { auth } from '@server/service/auth';
 export default async function ServerSideAuth() {
   const session = await auth();
   if (!session) {
-    redirect('/login');
+    redirect('/signin');
     return <div>请登录...</div>;
   }
   return (
@@ -18,6 +18,10 @@ export default async function ServerSideAuth() {
           这个页面必须在登录之后才能访问，否则会跳转到 /login 页面
         </p>
       </header>
+      <div>已登录账号信息：</div>
+      <pre>
+        <code>{JSON.stringify(session.user, null, 2)}</code>
+      </pre>
     </div>
   );
 }

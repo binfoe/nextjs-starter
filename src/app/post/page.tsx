@@ -12,7 +12,7 @@ export default async function SSRPost({ searchParams }: { searchParams: Record<s
       <header className='mb-10 border-b pb-10 dark:border-gray-700'>
         <p className='mb-2 text-sm font-semibold text-blue-600'>SSR & CSR Table</p>
         <h1 className='block text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl'>
-          列表同构渲染
+          表格同构渲染
         </h1>
         <p className='mt-2 text-lg text-gray-800 dark:text-gray-400'>
           初始加载页面，列表数据由 SSR 直接渲染，浏览器端看不到 ajax 网络请求。
